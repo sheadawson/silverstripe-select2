@@ -2,6 +2,7 @@
 Version: 3.2 Timestamp: Mon Sep 10 10:38:04 PDT 2012
 */
 .select2-container {
+    width: 512px;
     position: relative;
     display: inline-block;
     /* inline-block for ie7 */
@@ -521,4 +522,8 @@ disabled look for already selected choices in the results dropdown
 	.select2-search input {
 		background-position: 100% -21px !important;
 	}
+}
+
+select.select2{
+  width: 100%;
 }
