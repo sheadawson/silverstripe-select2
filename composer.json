@@ -1,0 +1,10 @@
+{
+	"name": "silverstripe/select2",
+	"description": "A silverstripe form field based on http://ivaynberg.github.com/select2/s",
+	"require": {
+		"php": ">=5.3.2",
+		"silverstripe/cms": "3.0.*",
+		"silverstripe/framework": "3.0.*"
+	},
+	"minimum-stability": "dev"
+}
