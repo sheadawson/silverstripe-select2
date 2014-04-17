@@ -16,5 +16,8 @@
 		"silverstripe/framework": "3.*",
 		"composer/installers": "*"
 	},
-	"replace": {"silverstripe/select3": "*"}
+	"extra": {
+		"installer-name": "select2"
+	}
+
 }
