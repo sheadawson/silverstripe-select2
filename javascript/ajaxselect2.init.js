@@ -33,7 +33,7 @@
 				                    id: id
 				                },
 				                dataType: "json"
-				            }).done(function(data) { callback(data[0]); });
+				            }).done(function(data) { callback(data.list[0]); });
 				        }
 				    },
 				    formatResult: function(item) {
