@@ -337,7 +337,9 @@ disabled look for already selected choices in the results dropdown
 }
 
 .select2-more-results.select2-active {
-    background: #f4f4f4 url('spinner.gif') no-repeat 100%;
+    padding: 10px;
+    text-indent: -9999999px;
+    background: #f4f4f4 url('spinner.gif') no-repeat center center;
 }
 
 .select2-more-results {
