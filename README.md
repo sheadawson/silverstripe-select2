@@ -50,10 +50,7 @@ $field->setConfig('minimumInputLength', 3);
 $field->setConfig('resultsFormat', '<strong>$Title</strong><br />$AbsuluteLink');
 
 // Configure how the currently selected item should be displayed. Default is '$Title'.
-$field->setConfig('resultsFormat', '$Title - ($ClassName)');
-
-// Configure how the currently selected item should be displayed. Default is '$Title'.
-$field->setConfig('selectionFormat', '$Title - ($ClassName)');
+$field->setConfig('selectionFormat', '$Title ($ClassName)');
 
 // Configure the text displayed when no item is selected. Default is 'Search...'
 $field->setConfig('placeholder', 'Search for a Page...');
