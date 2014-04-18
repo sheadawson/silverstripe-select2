@@ -41,7 +41,7 @@ class AjaxSelect2Field extends TextField{
 			$searchFields = $this->getConfig('searchFields');
 			foreach($searchFields as $searchField) {
 				$name = (strpos($searchField, ':') !== FALSE) ? $searchField : "$searchField:StartsWith";
-				$params[$name] = $request->getVar('q');
+				$params[$name] = $request->getVar('term');
 			}	
 			$start = (int)$request->getVar('id') ? (int)$request->getVar('id') * $this->getConfig('resultsLimit') : 0;
 			$list = $list->filterAny($params);

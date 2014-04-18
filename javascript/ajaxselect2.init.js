@@ -13,7 +13,7 @@
 				        dataType: 'json',
 				        data: function (term, page) {
 				            return {
-				                q: term,
+				                term: term,
 				                page: page
 				            };
 				        },
