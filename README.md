@@ -6,6 +6,10 @@
 
 SilverStripe framework 3.0 +
 
+## Maintainer Contact
+
+*  Shea Dawson (<shea@livesource.co.nz>)
+
 ## Select2Field + MultiSelect2Field
 
 Two form fields that make use of the basic select2 features. 
@@ -16,7 +20,7 @@ The AjaxSelect2Field is a dropdown field that makes use of the ajax result loadi
 
 ### Usage
 
-A basic implementation will use configuration defaults to provide a dropdown list of SiteTree objects, suitable for selecting a page
+A basic implementation will use configuration defaults to provide a dropdown list of SiteTree objects, suitable for searching for and selecting a page.
 
 ```php
 $field = AjaxSelect2Field::create('PageID');
@@ -24,7 +28,7 @@ $field = AjaxSelect2Field::create('PageID');
 
 ### Configuration
 
-You can configure your instance of AjaxSelect2Field with the following api.
+You can configure your instance of AjaxSelect2Field with the following api. The setConfig() method is chainable, too. 
 
 #### Examples
 
