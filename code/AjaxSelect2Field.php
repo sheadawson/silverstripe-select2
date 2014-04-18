@@ -33,22 +33,17 @@ class AjaxSelect2Field extends TextField{
 	public function search($request){
 		$list = DataList::create($this->getConfig('classToSearch'));
 		
-		if($id = $request->getVar('id')){
-			$results = $list->filter('ID', $id)->limit(1);
-			$total = 1;
-		}else{
-			$params = array();
-			$searchFields = $this->getConfig('searchFields');
-			foreach($searchFields as $searchField) {
-				$name = (strpos($searchField, ':') !== FALSE) ? $searchField : "$searchField:StartsWith";
-				$params[$name] = $request->getVar('term');
-			}	
-			$start = (int)$request->getVar('id') ? (int)$request->getVar('id') * $this->getConfig('resultsLimit') : 0;
-			$list = $list->filterAny($params);
-			$total = $list->count();
-			$results = $list->sort(strtok($searchFields[0], ':'), 'ASC')->limit($this->getConfig('resultsLimit'), $start);
-		}
-
+		$params = array();
+		$searchFields = $this->getConfig('searchFields');
+		foreach($searchFields as $searchField) {
+			$name = (strpos($searchField, ':') !== FALSE) ? $searchField : "$searchField:StartsWith";
+			$params[$name] = $request->getVar('term');
+		}	
+		$start = (int)$request->getVar('id') ? (int)$request->getVar('id') * $this->getConfig('resultsLimit') : 0;
+		$list = $list->filterAny($params);
+		$total = $list->count();
+		$results = $list->sort(strtok($searchFields[0], ':'), 'ASC')->limit($this->getConfig('resultsLimit'), $start);
+		
 		$return = array(
 			'list' => array(),
 			'total' => $total
@@ -56,18 +51,15 @@ class AjaxSelect2Field extends TextField{
 
 		$originalSourceFileComments = Config::inst()->get('SSViewer', 'source_file_comments');
 		Config::inst()->update('SSViewer', 'source_file_comments', false);
-		foreach($results as $result) {
+		foreach($results as $object) {
 			$return['list'][] = array(
-				'id' => $result->ID,
-				'resultsContent' => html_entity_decode(SSViewer::fromString($this->getConfig('resultsFormat'))->process($result)),
-				'selectionContent' => html_entity_decode(SSViewer::fromString($this->getConfig('selectionFormat'))->process($result))
+				'id' => $object->ID,
+				'resultsContent' => html_entity_decode(SSViewer::fromString($this->getConfig('resultsFormat'))->process($object)),
+				'selectionContent' => SSViewer::fromString($this->getConfig('selectionFormat'))->process($object)
 			);
 		}
 		Config::inst()->update('SSViewer', 'source_file_comments', $originalSourceFileComments);
-		return Convert::array2json($return);	
-		
-		
-		
+		return Convert::array2json($return);		
 	}
 
 
@@ -86,7 +78,7 @@ class AjaxSelect2Field extends TextField{
 	 * @return Array
 	 */
 	public function getAttributes() {
-		return array_merge(
+		$attributes = array_merge(
 			parent::getAttributes(),
 			array(
 				'type' => 'hidden',
@@ -96,5 +88,14 @@ class AjaxSelect2Field extends TextField{
 				'data-placeholder' => $this->getConfig('placeholder')
 			)
 		);
+
+		if($this->Value() && $object = DataObject::get($this->getConfig('classToSearch'))->byID($this->Value())){
+			$originalSourceFileComments = Config::inst()->get('SSViewer', 'source_file_comments');
+			Config::inst()->update('SSViewer', 'source_file_comments', false);
+			$attributes['data-selectioncontent'] = html_entity_decode(SSViewer::fromString($this->getConfig('selectionFormat'))->process($object));
+			Config::inst()->update('SSViewer', 'source_file_comments', $originalSourceFileComments);
+		}
+
+		return $attributes;
 	}
 }

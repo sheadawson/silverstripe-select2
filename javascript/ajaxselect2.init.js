@@ -26,21 +26,13 @@
 				        }
 				    },
 				    initSelection: function(element, callback) {
-				        var id=$(element).val();
-				        if (id!=='') {
-				            $.ajax($(element).data('searchurl'), {
-				                data: {
-				                    id: id
-				                },
-				                dataType: "json"
-				            }).done(function(data) { callback(data.list[0]); });
-				        }
+				        callback($(element).data('selectioncontent'));
 				    },
 				    formatResult: function(item) {
 				        return item.resultsContent;
 				    },
     				formatSelection: function(item) {
-				        return item.selectionContent;
+				        return item;
 				    },
 				    dropdownCssClass: "bigdrop", 
 				    escapeMarkup: function (m) { return m; }
