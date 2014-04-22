@@ -36,7 +36,7 @@ class AjaxSelect2Field extends TextField{
 		$params = array();
 		$searchFields = $this->getConfig('searchFields');
 		foreach($searchFields as $searchField) {
-			$name = (strpos($searchField, ':') !== FALSE) ? $searchField : "$searchField:StartsWith";
+			$name = (strpos($searchField, ':') !== FALSE) ? $searchField : "$searchField:partialMatch";
 			$params[$name] = $request->getVar('term');
 		}	
 		$start = (int)$request->getVar('id') ? (int)$request->getVar('id') * $this->getConfig('resultsLimit') : 0;
