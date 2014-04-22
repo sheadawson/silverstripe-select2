@@ -32,7 +32,12 @@
 				        return item.resultsContent;
 				    },
     				formatSelection: function(item) {
-				        return item;
+    					if(item.selectionContent){
+    						return item.selectionContent;	
+    					}else{
+    						return item;
+    					}
+				        
 				    },
 				    dropdownCssClass: "bigdrop", 
 				    escapeMarkup: function (m) { return m; }
