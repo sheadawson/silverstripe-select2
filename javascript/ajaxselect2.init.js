@@ -8,6 +8,7 @@
 				    minimumInputLength: self.data('minimuminputlength'),
 				    page_limit: self.data('resultslimit'),
 				    quietMillis: 100,
+				    allowClear: true,
 				    ajax: {
 				        url: self.data('searchurl'),
 				        dataType: 'json',
