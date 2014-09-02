@@ -1,3 +1,4 @@
+$('select.multiselect2').attr('multiple', '');
 jQuery.entwine("select2", function($) {
 	$("select.select2").entwine({
 		onmatch: function() {
