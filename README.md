@@ -1,6 +1,6 @@
 # silverstripe-select2
 
-3 silverstripe form fields based on http://ivaynberg.github.com/select2/.
+4 silverstripe form fields based on http://ivaynberg.github.com/select2/.
 
 ## Requirements
 
@@ -10,9 +10,17 @@ SilverStripe framework 3.0 +
 
 *  Shea Dawson (<shea@livesource.co.nz>)
 
-## Select2Field + MultiSelect2Field
+## Select2Field
 
-Two form fields that make use of the basic select2 features. 
+A basic dropdown field with enhanced Select2 UI
+
+## MultiSelect2Field
+
+A multiple select dropdown field with Select2 UI
+
+## GroupedDropdownField
+
+Extends SilverStripes GroupedDropdownField to add the Select2 UI
 
 ## AjaxSelect2Field
 
