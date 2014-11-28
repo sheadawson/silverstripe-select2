@@ -26,7 +26,7 @@ class AjaxSelect2Field extends TextField{
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery-entwine/dist/jquery.entwine-dist.js');
 		Requirements::javascript(SELECT2_MODULE . "/select2/select2.js");
 		Requirements::javascript(SELECT2_MODULE . '/javascript/ajaxselect2.init.js');
-		Requirements::css(SELECT2_MODULE . "/select2/select2.css");
+		Requirements::css(SELECT2_MODULE . "/select2/select2.min.css");
 		return parent::Field($properties);
 	}
 
