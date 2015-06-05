@@ -17,7 +17,8 @@ class AjaxSelect2Field extends TextField{
 		'resultsFormat' 		=> '$Title',
 		'selectionFormat' 		=> '$Title',
 		'placeholder'			=> 'Search...',
-		'excludes'				=> array()
+		'excludes'				=> array(),
+		'filter'				=> array()
 	);
 
 
@@ -42,6 +43,10 @@ class AjaxSelect2Field extends TextField{
 		}	
 		$start = (int)$request->getVar('id') ? (int)$request->getVar('id') * $this->getConfig('resultsLimit') : 0;
 		$list = $list->filterAny($params)->exclude($this->getConfig('excludes'));
+		$filter = $this->getConfig('filter');
+		if (count($filter) > 0) {
+			$list->filter($filter);
+		}
 		$total = $list->count();
 		$results = $list->sort(strtok($searchFields[0], ':'), 'ASC')->limit($this->getConfig('resultsLimit'), $start);
 		
