@@ -62,4 +62,8 @@ $field->setConfig('selectionFormat', '$Title ($ClassName)');
 
 // Configure the text displayed when no item is selected. Default is 'Search...'
 $field->setConfig('placeholder', 'Search for a Page...');
+
+// Allow selection of multiple results. NOTE - you must handle the selected IDs (comma separated list) in code
+$field->setConfig('multiple', true);
+
 ``` 
