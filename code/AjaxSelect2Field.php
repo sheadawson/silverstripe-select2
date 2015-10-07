@@ -18,7 +18,8 @@ class AjaxSelect2Field extends TextField{
 		'selectionFormat' 		=> '$Title',
 		'placeholder'			=> 'Search...',
 		'excludes'				=> array(),
-		'filter'				=> array()
+		'filter'				=> array(),
+		'multiple'				=> false,
 	);
 
 
@@ -91,7 +92,8 @@ class AjaxSelect2Field extends TextField{
 				'data-searchurl' => $this->Link('search'),
 				'data-minimuminputlength' => $this->getConfig('minimumInputLength'),
 				'data-resultslimit' => $this->getConfig('resultsLimit'),
-				'data-placeholder' => $this->getConfig('placeholder')
+				'data-placeholder' => $this->getConfig('placeholder'),
+				'data-multiple'		=> $this->getConfig('multiple')
 			)
 		);
 

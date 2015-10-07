@@ -4,6 +4,7 @@
 			onmatch: function() {
 				var self = this;
 				self.select2({
+					multiple: self.data('multiple'),
 				    placeholder: self.data('placeholder'),
 				    minimumInputLength: self.data('minimuminputlength'),
 				    page_limit: self.data('resultslimit'),
