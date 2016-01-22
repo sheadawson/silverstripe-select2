@@ -49,7 +49,7 @@ class AjaxSelect2Field extends TextField
         $list = $list->filterAny($params)->exclude($this->getConfig('excludes'));
         $filter = $this->getConfig('filter');
         if (count($filter) > 0) {
-            $list->filter($filter);
+            $list = $list->filter($filter);
         }
         $total = $list->count();
         $results = $list->sort(strtok($searchFields[0], ':'), 'ASC')->limit($this->getConfig('resultsLimit'), $start);
