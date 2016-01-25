@@ -24,7 +24,7 @@ Extends SilverStripes GroupedDropdownField to add the Select2 UI
 
 ## AjaxSelect2Field
 
-The AjaxSelect2Field is a dropdown field that makes use of the ajax result loading and infinite scroll features of select2. This is really useful when you need to offer users a way of choosing an object from a list of hundreds or thousands of records that would either break or make standard dropdown/select fields slow and heavy to load. 
+The AjaxSelect2Field is a dropdown field that makes use of the ajax result loading and infinite scroll features of select2. This is really useful when you need to offer users a way of choosing an object from a list of hundreds or thousands of records that would either break or make standard dropdown/select fields slow and heavy to load. Note that this does not currently work with multiple selection. PR welcome ;)
 
 ### Usage
 
