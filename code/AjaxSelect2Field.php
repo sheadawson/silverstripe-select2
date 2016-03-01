@@ -9,7 +9,7 @@ class AjaxSelect2Field extends TextField
 {
 
     private static $allowed_actions = array('search');
-    
+
     protected $config = array(
         'classToSearch'        => 'SiteTree',
         'searchFields'            => array('Title'),
@@ -38,7 +38,7 @@ class AjaxSelect2Field extends TextField
     public function search($request)
     {
         $list = DataList::create($this->getConfig('classToSearch'));
-        
+
         $params = array();
         $searchFields = $this->getConfig('searchFields');
         foreach ($searchFields as $searchField) {
@@ -53,7 +53,7 @@ class AjaxSelect2Field extends TextField
         }
         $total = $list->count();
         $results = $list->sort(strtok($searchFields[0], ':'), 'ASC')->limit($this->getConfig('resultsLimit'), $start);
-        
+
         $return = array(
             'list' => array(),
             'total' => $total

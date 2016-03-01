@@ -22,7 +22,7 @@
 				        results: function (data, page) {
 				        	var more = (page * self.data('resultslimit')) < data.total
 				            return {
-				            	results: data.list, 
+				            	results: data.list,
 				            	more: more
 				           	};
 				        }
@@ -35,13 +35,13 @@
 				    },
     				formatSelection: function(item) {
     					if(item.selectionContent){
-    						return item.selectionContent;	
+    						return item.selectionContent;
     					}else{
     						return item;
     					}
-				        
+
 				    },
-				    dropdownCssClass: "bigdrop", 
+				    dropdownCssClass: "bigdrop",
 				    escapeMarkup: function (m) { return m; }
 				});
 			}
