@@ -1,9 +1,9 @@
-<?php 
+<?php
 /**
  * MultiSelect2Field Definition
  *
  * @package    Silverstripe-Select2
- * @author     Shea Dawson <shea@silverstripe.com.au>  
+ * @author     Shea Dawson <shea@silverstripe.com.au>
  */
 class MultiSelect2Field extends ListBoxField
 {
