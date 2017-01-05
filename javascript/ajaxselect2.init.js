@@ -2,6 +2,7 @@
 	$.entwine("select2", function($) {
 		$("input.ajaxselect2").entwine({
 			onmatch: function() {
+				this._super();
 				var self = this;
 				self.select2({
 					multiple: self.data('multiple'),
