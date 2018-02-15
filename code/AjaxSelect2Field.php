@@ -20,6 +20,7 @@ class AjaxSelect2Field extends TextField
         'placeholder'            => 'Search...',
         'excludes'                => array(),
         'filter'                => array(),
+        'callback'              => null,
         'multiple'                => false,
     );
 
@@ -50,6 +51,11 @@ class AjaxSelect2Field extends TextField
         $filter = $this->getConfig('filter');
         if (count($filter) > 0) {
             $list = $list->filter($filter);
+        }
+        // Allow filtering by callback
+        $callback = $this->getConfig('callback');
+         if ($callback && is_callable($callback)) {
+            $list = $list->filterByCallback($callback);
         }
         $total = $list->count();
         $results = $list->sort(strtok($searchFields[0], ':'), 'ASC')->limit($this->getConfig('resultsLimit'), $start);
