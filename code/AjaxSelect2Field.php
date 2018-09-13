@@ -11,16 +11,16 @@ class AjaxSelect2Field extends TextField
     private static $allowed_actions = array('search');
 
     protected $config = array(
-        'classToSearch'        => 'SiteTree',
-        'searchFields'            => array('Title'),
-        'resultsLimit'            => 200,
-        'minimumInputLength'    => 2,
-        'resultsFormat'        => '$Title',
-        'selectionFormat'        => '$Title',
-        'placeholder'            => 'Search...',
-        'excludes'                => array(),
-        'filter'                => array(),
-        'multiple'                => false,
+        'classToSearch' => 'SiteTree',
+        'searchFields' => array('Title'),
+        'resultsLimit' => 200,
+        'minimumInputLength' => 2,
+        'resultsFormat' => '$Title',
+        'selectionFormat' => '$Title',
+        'placeholder' => 'Search...',
+        'excludes' => array(),
+        'filter' => array(),
+        'multiple' => false,
     );
 
 
@@ -31,6 +31,7 @@ class AjaxSelect2Field extends TextField
         Requirements::javascript(SELECT2_MODULE . "/select2/select2.js");
         Requirements::javascript(SELECT2_MODULE . '/javascript/ajaxselect2.init.js');
         Requirements::css(SELECT2_MODULE . "/select2/select2.min.css");
+
         return parent::Field($properties);
     }
 
@@ -69,6 +70,7 @@ class AjaxSelect2Field extends TextField
             );
         }
         Config::inst()->update('SSViewer', 'source_file_comments', $originalSourceFileComments);
+
         return Convert::array2json($return);
     }
 
@@ -76,6 +78,7 @@ class AjaxSelect2Field extends TextField
     public function setConfig($k, $v)
     {
         $this->config[$k] = $v;
+
         return $this;
     }
 
@@ -99,7 +102,7 @@ class AjaxSelect2Field extends TextField
                 'data-minimuminputlength' => $this->getConfig('minimumInputLength'),
                 'data-resultslimit' => $this->getConfig('resultsLimit'),
                 'data-placeholder' => $this->getConfig('placeholder'),
-                'data-multiple'        => $this->getConfig('multiple')
+                'data-multiple' => $this->getConfig('multiple')
             )
         );
 

@@ -1,4 +1,5 @@
 <?php
+
 class GroupedSelect2Field extends GroupedDropdownField
 {
 
@@ -10,6 +11,7 @@ class GroupedSelect2Field extends GroupedDropdownField
         Requirements::javascript(SELECT2_MODULE . "/javascript/select2.init.js");
         Requirements::css(SELECT2_MODULE . "/select2/select2.min.css");
         $this->addExtraClass('select2')->addExtraClass('no-chzn');
+
         return parent::Field($properties);
     }
 }

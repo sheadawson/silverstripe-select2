@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Select2Field Definition
  *
