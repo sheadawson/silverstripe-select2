@@ -1,5 +1,17 @@
 <?php
 
+namespace Sheadawson\Select2;
+
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Core\Convert;
+use SilverStripe\Forms\TextField;
+use SilverStripe\ORM\DataList;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\View\Requirements;
+use SilverStripe\View\SSViewer;
+use SilverStripe\Core\Manifest\ModuleLoader;
+use Page;
+
 /**
  * A dropdown field with ajax loaded options list, uses jquery select2
  * http://ivaynberg.github.io/select2/
@@ -7,7 +19,6 @@
  **/
 class AjaxSelect2Field extends TextField
 {
-
     private static $allowed_actions = array('search');
 
     protected $config = array(
@@ -23,30 +34,30 @@ class AjaxSelect2Field extends TextField
         'multiple' => false,
     );
 
-
     public function Field($properties = array())
     {
-        Requirements::javascript(THIRDPARTY_DIR . '/jquery/jquery.js');
-        Requirements::javascript(THIRDPARTY_DIR . '/jquery-entwine/dist/jquery.entwine-dist.js');
-        Requirements::javascript(SELECT2_MODULE . "/select2/select2.js");
-        Requirements::javascript(SELECT2_MODULE . '/javascript/ajaxselect2.init.js');
-        Requirements::css(SELECT2_MODULE . "/select2/select2.min.css");
+        Requirements::javascript('silverstripe/admin: thirdparty/jquery/jquery.js');
+        Requirements::javascript('silverstripe/admin: thirdparty/jquery-entwine/dist/jquery.entwine-dist.js');
+        Requirements::javascript('sheadawson/silverstripe-select2: select2/select2.js');
+        Requirements::javascript('sheadawson/silverstripe-select2: javascript/ajaxselect2.init.js');
+        Requirements::css('sheadawson/silverstripe-select2: select2/select2.min.css');
 
         return parent::Field($properties);
     }
-
 
     public function search($request)
     {
         $list = DataList::create($this->getConfig('classToSearch'));
 
-        $params = array();
+        $params = [];
         $searchFields = $this->getConfig('searchFields');
+
         foreach ($searchFields as $searchField) {
-            $name = (strpos($searchField, ':') !== false) ? $searchField : "$searchField:partialMatch";
+            $name = (strpos($searchField, ':') !== false) ? $searchField : "$searchField:PartialMatch";
             $params[$name] = $request->getVar('term');
         }
         $start = (int)$request->getVar('id') ? (int)$request->getVar('id') * $this->getConfig('resultsLimit') : 0;
+
         $list = $list->filterAny($params)->exclude($this->getConfig('excludes'));
         $filter = $this->getConfig('filter');
         if (count($filter) > 0) {
@@ -74,7 +85,6 @@ class AjaxSelect2Field extends TextField
         return Convert::array2json($return);
     }
 
-
     public function setConfig($k, $v)
     {
         $this->config[$k] = $v;
@@ -82,15 +92,13 @@ class AjaxSelect2Field extends TextField
         return $this;
     }
 
-
     public function getConfig($k)
     {
         return isset($this->config[$k]) ? $this->config[$k] : null;
     }
 
-
     /**
-     * @return Array
+     * @return array
      */
     public function getAttributes()
     {
