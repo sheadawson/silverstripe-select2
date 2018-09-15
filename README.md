@@ -1,10 +1,10 @@
 # silverstripe-select2
 
-4 silverstripe form fields based on http://ivaynberg.github.com/select2/.
+Four silverstripe form fields based on http://ivaynberg.github.com/select2/.
 
 ## Requirements
 
-SilverStripe framework 3.0 +
+SilverStripe framework ^4
 
 ## Maintainer Contact
 

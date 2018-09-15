@@ -1,23 +1,34 @@
 {
-	"name": "sheadawson/silverstripe-select2",
-	"description": "A set of silverstripe form fields based on http://ivaynberg.github.com/select2/s",
-	"type": "silverstripe-module",
-	"keywords": ["silverstripe", "forms", "ajax"],
-	"homepage": "http://github.com/sheadawson/silverstripe-select2",
-	"authors": [
-	{
-		"name": "Shea Dawson",
-		"email": "shea@livesource.co.nz"
-	}
-	],
-
-	"require":
-	{
-		"silverstripe/framework": "3.*",
-		"composer/installers": "*"
-	},
-	"extra": {
-		"installer-name": "select2"
-	}
-
+    "name": "sheadawson/silverstripe-select2",
+    "description": "A set of silverstripe form fields based on http://ivaynberg.github.com/select2/",
+    "type": "silverstripe-vendormodule",
+    "homepage": "http://github.com/sheadawson/silverstripe-select2",
+    "keywords": [
+        "silverstripe",
+        "forms",
+        "ajax"
+    ],
+    "authors": [
+        {
+            "name": "Shea Dawson",
+            "email": "shea@livesource.co.nz"
+        }
+    ],
+    "require": {
+        "silverstripe/framework": "^4",
+        "composer/installers": "*"
+    },
+    "extra": {
+        "installer-name": "select2",
+        "expose": [
+            "javascript",
+            "select2"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "sheadawson\\select2\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
 }
